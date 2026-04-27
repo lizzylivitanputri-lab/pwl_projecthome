@@ -7,40 +7,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
-    <form action="{{route('mahasiswa.edit', $mahasiswa->id)}}"  method="post">
+    <form action="{{route('mata_kuliah.edit', $mata_kuliah->id)}}"  method="post">
         @csrf
-        <input type="hidden" name="id" value="{{$mahasiswa->id}}">
+        <input type="hidden" name="id" value="{{$dosen->id}}">
         <input type="hidden" name="_method" value="PUT">
         <table class="table table-success table-striped-columns">
             <tr>
-                <td>Nama Lengkap</td>
+                <td>Jurusan ID</td>
                 <td>:</td>
-                <td><input type="text" name="Fullname" value="{{$mahasiswa->Fullname}}"></td>
+                <td><input type="text" name="Jurusan" value="{{$mata_kuliah->Jurusan}}"></td>
             </tr>
             <tr>
-                <td>Nomor Induk Mahasiswa</td>
+                <td>Kode Mata Kuliah</td>
                 <td>:</td>
-                <td><input type="text" name="NIM" value="{{$mahasiswa->NIM}}"></td>
+                <td><input type="text" name="Kode_Mata_Kuliah" value="{{$mata_kuliah->Kode_Mata_Kuliah}}"></td>
             </tr>
             <tr>
-                <td>Nomor Induk Siswa Nasional</td>
+                <td>Nama Mata Kuliah</td>
                 <td>:</td>
-                <td><input type="text" name="NISN" value="{{$mahasiswa->NISN}}"></td>
+                <td><input type="text" name="Nama_Mata_Kuliah" value="{{$mata_kuliah->Nama_Mata_Kuliah}}"></td>
             </tr>
             <tr>
-                <td>Tempat Lahir</td>
+                <td>SKS</td>
                 <td>:</td>
-                <td><input type="text" name="Tempat_Lahir" value="{{$mahasiswa->Tempat_Lahir}}"></td>
+                <td><input type="text" name="SKS" value="{{$mata_kuliah->SKS}}"></td>
             </tr>
             <tr>
-                <td>Tanggal Lahir</td>
+                <td>Dosen ID</td>
                 <td>:</td>
-                <td><input type="text" name="Tanggal_Lahir" value="{{$mahasiswa->Tanggal_Lahir}}"></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><textarea name="Alamat">{{$mahasiswa->Alamat}}</textarea></td>
+                <td><input type="text" name="Dosen" value="{{$mata_kuliah->Dosen}}"></td>
             </tr>
             <tr>
                 <td colspan="3">
