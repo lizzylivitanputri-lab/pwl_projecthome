@@ -13,6 +13,10 @@ class MataKuliah extends Model
         'Kode_Mata_Kuliah',
         'Nama_Mata_Kuliah',
         'SKS',
-        'Dosen_Id',
+        'Dosen_Id'
     ];
+
+    public function kelas() {
+        return $this->hasMany(Kelas::class, 'id', 'kode_mata_kuliah');
+    }
 }

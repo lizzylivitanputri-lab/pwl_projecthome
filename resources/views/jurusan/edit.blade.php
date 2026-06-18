@@ -3,29 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Edit Jurusan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
-    <form action="{{route('jurusan.edit', $jurusan->id)}}"  method="post">
+    <form action="{{ action([App\Http\Controllers\JurusanController::class, 'update'], $jurusan->id)}}"  method="post">
         @csrf
-        <input type="hidden" name="id" value="{{$dosen->id}}">
+        <input type="hidden" name="id" value="{{$jurusan->id}}">
         <input type="hidden" name="_method" value="PUT">
         <table class="table table-success table-striped-columns">
             <tr>
                 <td>Kode Jurusan</td>
                 <td>:</td>
-                <td><input type="text" name="Kode_Jurusan" value="{{$jurusan->Kode_Jurusan}}"></td>
+                <td><input type="text" name="Kode_Jurusan" value="{{$jurusan->Kode_Jurusan}}" class="form-control"></td>
             </tr>
             <tr>
                 <td>Nama Jurusan</td>
                 <td>:</td>
-                <td><input type="text" name="Nama_Jurusan" value="{{$jurusan->Nama_Jurusan}}"></td>
+                <td><input type="text" name="Nama_Jurusan" value="{{$jurusan->Nama_Jurusan}}" class="form-control"></td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <input type="submit" value="Update">
-                    <input type="reset" value="Clear">
+                    <input type="submit" value="Update" class="form-control"><br>
+                    <input type="reset" value="Clear" class="form-control">
                 </td>
             </tr>
         </table>

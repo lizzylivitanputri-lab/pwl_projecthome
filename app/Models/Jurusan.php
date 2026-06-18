@@ -8,8 +8,8 @@ class Jurusan extends Model
 {
     protected $table = 'table_jurusan';
 
-     protected $fillable = [
+    protected $fillable = [
         'Kode_Jurusan',
-        'Nama_Jurusan',
+        'Nama_Jurusan'
     ];
 }

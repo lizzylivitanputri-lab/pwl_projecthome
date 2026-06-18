@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mata_Kuliah;
+use App\Models\MataKuliah;
 use Illuminate\Http\Request;
 
 class MataKuliahController extends Controller
@@ -12,8 +12,8 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        return view('mata_kuliah.index', [
-            'mata_kuliah' => Mata_Kuliah::all()
+        return view('matakuliah.index', [
+            'matakuliah' => MataKuliah::all()
         ]);
     }
 
@@ -22,7 +22,7 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        return view('mata_kuliah.create', []);
+        return view('matakuliah.create', []);
     }
 
     /**
@@ -32,7 +32,7 @@ class MataKuliahController extends Controller
     {
         $data = $request->except('_token');
 
-        Mata_Kuliah::create($data);
+        MataKuliah::create($data);
 
         return redirect()->action([MataKuliahController::class, 'index']);
     }
@@ -42,7 +42,7 @@ class MataKuliahController extends Controller
      */
     public function show($id)
     {
-        return Mata_Kuliah::find($id);
+        return MataKuliah::find($id);
     }
 
     /**
@@ -50,8 +50,8 @@ class MataKuliahController extends Controller
      */
     public function edit($id)
     {
-        return view('mata_kuliah.edit', [
-            'mata_kuliah' => Mata_Kuliah::find($id)
+        return view('matakuliah.edit', [
+            'matakuliah' => MataKuliah::find($id)
         ]);
     }
 
@@ -62,7 +62,7 @@ class MataKuliahController extends Controller
     {
         $data = $request->except('_token', 'id', '_method');
 
-        Mata_Kuliah::find($id)->update($data);
+        MataKuliah::find($id)->update($data);
 
         return redirect()->action([MataKuliahController::class, 'index']);
     }
@@ -72,7 +72,7 @@ class MataKuliahController extends Controller
      */
     public function destroy($id)
     {
-        Mata_Kuliah::find($id)->delete();
+        MataKuliah::find($id)->delete();
 
         return redirect()->action([MataKuliahController::class, 'index']);
     }    

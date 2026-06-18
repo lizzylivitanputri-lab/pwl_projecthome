@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jurusan</title>
+    <title>Index KRS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
@@ -26,10 +26,10 @@
                 Menu
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a></li>
+                <li><a class="dropdown-item active" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a></li>
                 <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}">Mahasiswa</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item active" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a></li>
+                <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a></li>
                 <li><a class="dropdown-item" href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}">Mata Kuliah</a></li>
               </ul>
             </li>
@@ -44,30 +44,34 @@
         </div>
       </div>
     </nav>
-    <a href={{ action([App\Http\Controllers\JurusanController::class, 'create']) }}>
+    <a href={{ action([App\Http\Controllers\KRSController::class, 'create']) }}>
         <input type="button" value="Create">
     </a>
     <table class="table table-striped">
         <thead>
             <th>No</th>
-            <th>Kode Jurusan</th>
-            <th>Nama Jurusan</th>
-            <th>Tanggal Dibuat</th>
+            <th>NIM</th>
+            <th>Nama Mahasiswa</th>
+            <th>Tahun Ajaran</th>
+            <th>Semester</th>
+            <th>Total SKS</th>
             <th>Aksi</th>
         </thead>
-        @foreach ($jurusan as $j)
+        @foreach ($krs as $k)
         <tr>
-            <td>{{$j->id}}</td>
-            <td>{{$j->Kode_Jurusan}}</td>
-            <td>{{$j->Nama_Jurusan}}</td>
-            <td>{{$j->created_at}}</td>
+            <td>{{$k->id}}</td>
+            <td>{{$k->mahasiswa->NIM}}</td>
+            <td>{{$k->mahasiswa->Fullname}}</td>
+            <td>{{$k->tahun_ajaran}}</td>
+            <td>{{$k->semester}}</td>
+            <td>{{$k->total_sks}}</td>
             <td>
-                <a href={{ action([App\Http\Controllers\JurusanController::class, 'edit'], $m->id)}}>
-                    <input type="button" value="Edit">
+                <a href="{{ action([App\Http\Controllers\KRSController::class, 'show'], $k->id)}}" target="_blank" clas="button">
+                  <input type="button" value="View">
                 </a>
-                <form action="{{ action([App\Http\Controllers\JurusanController::class, 'destroy'], $m->id)}}"  method="post">
+                <form action="{{ action([App\Http\Controllers\KRSController::class, 'destroy'], $k->id)}}"  method="post">
                     @csrf
-                    <input type="hidden" name="id" value="{{$m->id}}">
+                    <input type="hidden" name="id" value="{{$k->id}}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="submit" value="Delete">
                 </form>

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
-    <form action="{{route('dosen.edit', $dosen->id)}}"  method="post">
+    <form action="{{{{ action([App\Http\Controllers\DosenController::class, 'update'], $dosen->id)}}"  method="post">
         @csrf
         <input type="hidden" name="id" value="{{$dosen->id}}">
         <input type="hidden" name="_method" value="PUT">
@@ -18,7 +18,7 @@
                 <td><input type="text" name="Fullname" value="{{$dosen->Fullname}}"></td>
             </tr>
             <tr>
-                <td>Nomor Induk Pengawai</td>
+                <td>Nomor Induk Pegawai</td>
                 <td>:</td>
                 <td><input type="text" name="NIP" value="{{$dosen->NIP}}"></td>
             </tr>
@@ -26,16 +26,6 @@
                 <td>Nomor Induk Dosen Nasional</td>
                 <td>:</td>
                 <td><input type="text" name="NIDN" value="{{$dosen->NIDN}}"></td>
-            </tr>
-            <tr>
-                <td>Pendidikan Terakhir</td>
-                <td>:</td>
-                <td><input type="text" name="Pendidikan_Terakhir" value="{{$dosen->Pendidikan_Terakhir}}"></td>
-            </tr>
-            <tr>
-                <td>Jurusan ID</td>
-                <td>:</td>
-                <td><input type="text" name="Jurusan" value="{{$dosen->Jurusan}}"></td>
             </tr>
             <tr>
                 <td>Tempat Lahir</td>
@@ -51,6 +41,16 @@
                 <td>Alamat</td>
                 <td>:</td>
                 <td><textarea name="Alamat">{{$dosen->Alamat}}</textarea></td>
+            </tr>
+            <tr>
+                <td>Pendidikan Terakhir</td>
+                <td>:</td>
+                <td><input type="text" name="Pendidikan_Terakhir" value="{{$dosen->Pendidikan_Terakhir}}"></td>
+            </tr>
+            <tr>
+                <td>Jurusan Utama</td>
+                <td>:</td>
+                <td><input type="text" name="Jurusan_id" value="{{$dosen->Jurusan_id}}"></td>                
             </tr>
             <tr>
                 <td colspan="3">

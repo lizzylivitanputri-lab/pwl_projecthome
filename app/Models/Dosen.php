@@ -9,13 +9,17 @@ class Dosen extends Model
        protected $table = 'table_dosen';
 
        protected $fillable = [
-        'Fullname',
-        'NIM',
-        'NIDN',
-        'Pendidikan_Terakhir',
-        'Jurusan',
-        'Tempat_Lahir',
-        'Tanggal_Lahir',
-        'Alamat'
-    ];
+              'Fullname',
+              'NIP',
+              'NIDN',
+              'Pendidikan_Terakhir',
+              'Jurusan_id',
+              'Tempat_Lahir',
+              'Tanggal_Lahir',
+              'Alamat'
+       ];
+
+       public function kelas() {
+              return $this->hasMany(Kelas::class, 'id', 'kode_dosen');
+       }
 }
